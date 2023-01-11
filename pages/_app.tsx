@@ -1,11 +1,16 @@
 import '../styles/globals.css'
 import type {AppProps} from 'next/app'
 import {ChakraProvider} from "@chakra-ui/react";
+import Navbar from "../src/components/Navbar";
+import UserContextProvider from "../src/contexts/userContext";
 
 export default function App({Component, pageProps}: AppProps) {
     return (
         <ChakraProvider>
-            <Component {...pageProps} />
+            <UserContextProvider>
+                <Navbar></Navbar>
+                <Component {...pageProps} />
+            </UserContextProvider>
         </ChakraProvider>
     )
 }
