@@ -36,9 +36,12 @@ export class ItemService {
     };
 
     search = async (searchParam : string) => {
-        return await axios.get(this.baseUrl + "/all", {
+        return await axios.post(this.baseUrl + "/search", {
+            name: searchParam,
+        }, {
             headers: {
-                ...getAuthorizationHeader()
+                ...getAuthorizationHeader(),
+                'Content-Type': 'application/json'
             }
         }).then((res) => {
             console.log({...res.data})
